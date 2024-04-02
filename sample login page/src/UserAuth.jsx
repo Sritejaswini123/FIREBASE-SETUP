@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { auth, createUserWithEmailAndPassword } from './firebase';
+import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from './firebase';
 
 const UserAuth = () => {
     const [data, setData] = useState({
@@ -27,7 +27,7 @@ const UserAuth = () => {
         e.preventDefault();
 
         try {
-            const userCredential = await auth.signInWithEmailAndPassword(email, password);
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
             console.log(userCredential.user);
         } catch (error) {
             console.log(error);
